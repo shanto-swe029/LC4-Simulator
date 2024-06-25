@@ -1,6 +1,8 @@
-# LC4 Disassembler
+# LC4 Simulator
 
-This project involves creating an LC4 Disassembler in C. The program reads a .OBJ file created by PennSim, parses it, and loads the data into a hash table of linked lists representing the segments of LC4’s memory. The goal is to reverse assemble the contents back into the original assembly code.
+## Overview
+
+The LC4 Simulator is a command-line tool designed to simulate the execution of LC4 machine code. It loads binary object files created by the LC4 assembler, executes the instructions, and maintains the state of the LC4 processor. The simulator generates trace files that document the execution cycle-by-cycle.
 
 ## Table of Contents
 - [Description](#description)
@@ -13,46 +15,58 @@ This project involves creating an LC4 Disassembler in C. The program reads a .OB
 - [Contact](#contact)
 
 ## Description
-The LC4 Disassembler reads an LC4 .OBJ file, parses it, and loads the data into a hash table of linked lists. It then reverse assembles the binary data back into assembly code. This project demonstrates the use of dynamic memory in C, including linked lists and hash tables.
+
+The LC4 Simulator reads LC4 .OBJ files, parses them, and loads the instructions and data into memory. It then simulates the execution of these instructions, updating the processor's state and producing a detailed trace of each cycle's activities. The simulator handles various LC4 machine code sections, including code, data, symbols, file names, and line numbers.
 
 ## Features
-- Reads and parses LC4 .OBJ files
-- Loads data into a hash table of linked lists
-- Reverse assembles binary data into assembly code
-- Handles dynamic memory allocation and management
+
+- Reads and parses PennSim-generated .OBJ files.
+- Loads instructions and data into the LC4 memory.
+- Simulates the execution of LC4 machine code.
+- Produces trace files with detailed cycle information.
+- Handles endianness conversion for different architectures.
 
 ## Technologies Used
+
 - C programming language
-- clang compiler
+- Clang compiler
 
 ## Installation
-1. **Compile the program:**
+
+1. **Compile the project:**
     ```sh
-    clang lc4_memory.c lc4_memory_test.c -o lc4_memory_test
+    make all
     ```
 
+This command will generate an executable named `trace`.
+
 ## Usage
-1. **Run the disassembler:**
+
+1. **Run the simulator:**
     ```sh
-    ./lc4 <output_filename.txt> <object_file1.obj> <object_file2.obj> ...
+    ./trace output_filename.txt first.obj second.obj third.obj ...
     ```
-   Replace `<output_filename.txt>` with the desired output file name and `<object_file1.obj>`, `<object_file2.obj>`, etc., with the names of your LC4 object files.
+
+   - `output_filename.txt`: The name of the file where the trace output will be written.
+   - `first.obj`, `second.obj`, `third.obj`, ...: One or more LC4 object files to be loaded into the simulator.
 
 2. **Example:**
     ```sh
-    ./lc4 output.txt first.obj second.obj
+    ./trace output.txt example1.obj example2.obj
     ```
 
 ## Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -m 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Open a Pull Request
+
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/fooBar`).
+3. Commit your changes (`git commit -m 'Add some fooBar'`).
+4. Push to the branch (`git push origin feature/fooBar`).
+5. Open a Pull Request.
 
 ## License
+
 This project is licensed under the MIT License.
 
 ## Contact
-For any questions or support, please contact [dev.shanto.bd@gmail.com](mailto:dev.shanto.bd@gmail.com).
 
+For any questions or support, please contact [dev.shanto.bd@gmail.com](mailto:dev.shanto.bd@gmail.com).
